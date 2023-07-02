@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref, child, get } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBGVZPw5ChtJFyprVQgaOOyupePtZbuv2c",
@@ -21,4 +21,15 @@ const app = initializeApp({
   appId: "1:776846932639:web:0d51df7b0fc6538cc700aa",
 });
 
-export const db = getDatabase(app);
+export const dbRef = ref(getDatabase());
+get(child(dbRef, `Owners/`))
+  .then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
