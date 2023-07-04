@@ -11,5 +11,7 @@ export default class OwnersService {
     Parse.serverURL = host_url;
     const query = new Parse.Query("Owner");
     const allOwners = await query.find();
+    return allOwners;
+    console.log(allOwners);
   }
 }
