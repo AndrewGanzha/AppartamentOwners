@@ -5,7 +5,9 @@ export const App = () => {
   return (
     <>
       <Header></Header>
-      <OwnersList />
+      <div className="container">
+        <OwnersList />
+      </div>
     </>
   );
 };
