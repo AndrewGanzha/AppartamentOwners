@@ -1,7 +1,11 @@
-import React from "react";
-import { dbRef } from "./service/OwnerService";
+import { Header } from "./components/Header";
+import { OwnersList } from "./components/OwnersList";
 
 export const App = () => {
-  console.log(dbRef);
-  return <div></div>;
+  return (
+    <>
+      <Header></Header>
+      <OwnersList />
+    </>
+  );
 };
