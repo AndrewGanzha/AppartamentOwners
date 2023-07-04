@@ -1,24 +1,15 @@
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import Parse from "parse/dist/parse.min.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBGVZPw5ChtJFyprVQgaOOyupePtZbuv2c",
-  authDomain: "appartamentowners.firebaseapp.com",
-  databaseURL: "https://appartamentowners-default-rtdb.firebaseio.com",
-  projectId: "appartamentowners",
-  storageBucket: "appartamentowners.appspot.com",
-  messagingSenderId: "776846932639",
-  appId: "1:776846932639:web:0d51df7b0fc6538cc700aa",
+const app_id = "IApa5N9uZumQafVLLG8KuKpwIxZrs6GWRAwisrxd";
+const host_url = "https://parseapi.back4app.com";
+const javascript_key = "e3DEAZ8eWuufDJwgrvjO1LkYV2b84y5z8RB03IgU";
+export const dataBase = [];
+
+Parse.initialize(app_id, javascript_key);
+Parse.serverURL = host_url;
+
+export const fetchAllOwners = async () => {
+  const query = new Parse.Query("Owner");
+  const allOwners = await query.find();
+  console.log(allOwners.attributes);
 };
-
-const app = initializeApp({
-  apiKey: "AIzaSyBGVZPw5ChtJFyprVQgaOOyupePtZbuv2c",
-  authDomain: "appartamentowners.firebaseapp.com",
-  databaseURL: "https://appartamentowners-default-rtdb.firebaseio.com",
-  projectId: "appartamentowners",
-  storageBucket: "appartamentowners.appspot.com",
-  messagingSenderId: "776846932639",
-  appId: "1:776846932639:web:0d51df7b0fc6538cc700aa",
-});
-
-export const db = getDatabase(app);
