@@ -21,7 +21,6 @@
     "@mui/material": "^5.13.6",
     "@react-firebase/database": "^0.3.11",
     "@types/styled-components": "^5.1.26",
-    "firebase": "^9.23.0",
     "parse": "^4.1.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"

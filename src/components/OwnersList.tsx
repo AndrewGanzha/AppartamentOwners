@@ -17,7 +17,7 @@ export const OwnersList = () => {
   return (
     <ul>
       {owners.map((item) => {
-        return <OwnerItem key={item._objCount} {...item.attributes} />;
+        return <OwnerItem key={item.id} {...item.attributes} />;
       })}
     </ul>
   );
