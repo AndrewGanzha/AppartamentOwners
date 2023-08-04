@@ -1,13 +1,10 @@
-import React, { Children } from "react";
-
+import { Button } from "@mui/material";
 interface ButtonProps {
   children: string;
+  deleteOwner: (id: string) => Promise<void>;
+  id: string;
 }
 
-export const Button = ({ children }: ButtonProps) => {
-  return (
-    <button className="p-2 h-10 w-auto border-solid border-2 border-cyan-400">
-      {children}
-    </button>
-  );
+export const DeleteButton = ({ children, deleteOwner, id }: ButtonProps) => {
+  return <Button onClick={() => deleteOwner(id)}>{children}</Button>;
 };
