@@ -12,6 +12,16 @@ export default class OwnersService {
     const allOwners = await query.find();
     return allOwners;
   }
-
-  static async deleteItem() {}
+  static async deleteItem(id: string) {
+    const owner = new Parse.Object("Owner");
+    owner.set("id", id);
+    try {
+      //destroy the object
+      let result = await owner.destroy();
+      alert("Object deleted with objectId: " + result.id);
+      this.getAll();
+    } catch (error: any) {
+      alert("Failed to delete object, with error code: " + error.message);
+    }
+  }
 }
