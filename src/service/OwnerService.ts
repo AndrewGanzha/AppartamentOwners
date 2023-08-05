@@ -17,11 +17,39 @@ export default class OwnersService {
     owner.set("id", id);
     try {
       //destroy the object
-      let result = await owner.destroy();
+      const result = await owner.destroy();
       alert("Object deleted with objectId: " + result.id);
       this.getAll();
     } catch (error: any) {
       alert("Failed to delete object, with error code: " + error.message);
+    }
+  }
+  static async addItem(
+    name: string,
+    city: string,
+    date: string,
+    age: number,
+    child: boolean
+  ) {
+    Parse.initialize(app_id, javascript_key);
+    Parse.serverURL = host_url;
+
+    const Owners = Parse.Object.extend("Owner");
+    const owner = new Owners();
+
+    owner.set("Name", name);
+    owner.set("Age", age);
+    owner.set("City", city);
+    owner.set("Date", date);
+    owner.set("Child", child);
+    owner.save();
+    console.log(owner);
+    try {
+      //Save the Object
+      const result = await owner.save();
+      alert("Object updated with objectId: " + result.id);
+    } catch (error: any) {
+      alert("Failed to update object, with error code: " + error.message);
     }
   }
 }
